@@ -1,139 +1,451 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background: #00558a;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 50px;
+  transition: all 0.3s ease;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #a0d1ff;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #a0d1ff;
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* MENU HAMBURGUER */
+.menu-hamburguer {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.menu-hamburguer .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white; /* Barras brancas */
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.menu-hamburguer.active .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-hamburguer.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-hamburguer.active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* CARROSSEL */
+.carrossel {
+  position: relative;
+  height: 90vh;
+  max-height: 800px;
+  overflow: hidden;
+}
+
+.carrossel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carrossel .mensagem {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 700;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(246, 246, 246);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  padding: 0 20px;
+  line-height: 1.3;
+  letter-spacing: 1px;
+}
+
+.carrossel .mensagem h2 {
+  background: rgba(178, 179, 180, 0.7);
+  display: inline-block;
+  padding: 20px 40px;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+}
+
+/* SOBRE */
+.sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px 5%;
+  gap: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sobre .texto {
+  padding: 20px;
+}
+
+.sobre .texto h2 {
+  font-size: 2.5rem;
+  color: #00558a;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.sobre .texto h2::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background: #00558a;
+  bottom: -10px;
+  left: 0;
+}
+
+.sobre .texto p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.sobre .imagem {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+.sobre .imagem img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.sobre .imagem:hover img {
+  transform: scale(1.03);
+}
+
+/* ESPECIALIDADES */
+.especialidades {
+  padding: 80px 5%;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.especialidades h2 {
+  font-size: 2.5rem;
+  color: #00558a;
+  margin-bottom: 10px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  color: #00558a;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.card p {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.card button {
+  margin-top: 10px;
+  padding: 12px 25px;
+  background: #00558a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.card button:hover {
+  background: #003d66;
+}
+
+/* CONTATO */
+.contato {
+  padding: 80px 5%;
+  text-align: center;
+  background: white;
+}
+
+.contato h2 {
+  font-size: 2.5rem;
+  color: #00558a;
+  margin-bottom: 20px;
+}
+
+.contato form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.contato input,
+.contato textarea {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.contato input:focus,
+.contato textarea:focus {
+  border-color: #00558a;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 85, 138, 0.1);
+}
+
+.contato textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contato button {
+  background: #00558a;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.contato button:hover {
+  background: #003d66;
+}
+
+/* FOOTER */
+footer {
+  background: #0a2540;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 60px 5%;
+}
+
+footer .coluna h4 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: #a0d1ff;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+footer .coluna h4::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  background: #a0d1ff;
+  bottom: 0;
+  left: 0;
+}
+
+footer .coluna p {
+  margin-bottom: 15px;
+  line-height: 1.8;
+  color: #cbd5e0;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+  .sobre {
+    grid-template-columns: 1fr;
+    padding: 60px 5%;
   }
   
-  body {
-    font-family: sans-serif;
-    line-height: 1.6;
+  .sobre .imagem {
+    max-width: 500px;
+    margin: 0 auto;
   }
-  
-  nav {
-    background: #007BFF;
-    padding: 15px 30px;
-    color: #fff;
+}
+
+@media (max-width: 768px) {
+  .menu-hamburguer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   
-  nav ul {
-    display: flex;
-    list-style: none;
-  }
-  
-  nav ul li {
-    margin-left: 20px;
-  }
-  
-  nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  header {
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .animated-background {
-    background-image: url('assets/img1.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: -100%;
     width: 100%;
-    animation: moveBackground 20s ease-in-out infinite alternate;
-  }
-  
-  @keyframes moveBackground {
-    0% {
-      background-position: center;
-    }
-    50% {
-      background-position: 60% center;
-    }
-    100% {
-      background-position: 40% center;
-    }
-  }
-  
-  .section {
-    padding: 60px 30px;
-  }
-  
-  .historia {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    align-items: center;
-  }
-  
-  .historia .imagem img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 8px;
-  }
-  
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-  }
-  
-  .card {
-    background: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .card button {
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  form {
-    max-width: 600px;
-    margin: auto;
-    display: flex;
+    height: calc(100vh - 80px);
+    background: #00558a;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    transition: all 0.5s ease;
+    padding: 40px 0;
   }
   
-  form input, form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .nav-links.active {
+    left: 0;
   }
   
-  form button {
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 5px;
-    cursor: pointer;
+  .nav-links li {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.4s ease;
+  }
+  
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Animação sequencial para os itens do menu */
+  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+  .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+  
+  .carrossel {
+    height: 70vh;
   }
   
   footer {
-    background: #222;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    padding: 40px 20px;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
+    text-align: center;
   }
   
-  .footer-coluna {
-    max-width: 300px;
-    margin-bottom: 20px;
+  footer .coluna h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 576px) {
+  nav {
+    padding: 15px 5%;
   }
   
+  .logo img {
+    height: 40px;
+  }
+  
+  .carrossel {
+    height: 60vh;
+  }
+  
+  .carrossel .mensagem h2 {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    padding: 10px 20px;
+  }
+  
+  .sobre {
+    padding: 40px 5%;
+  }
+  
+  .especialidades, .contato {
+    padding: 60px 5%;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+}
